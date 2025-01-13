@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <div class="left-panel">
+        <button id="addButton" onmouseover="showDescription('add')" onmouseout="hideDescription()" onclick="window.location.href='/addchoise'">Добавить</button>
+        <button id="viewButton" onmouseover="showDescription('view')" onmouseout="hideDescription()" onclick="window.location.href='/view'">Просмотреть</button>
+        <button id="editButton" onmouseover="showDescription('edit')" onmouseout="hideDescription()">Изменить</button>
+        <button id="deleteButton" onmouseover="showDescription('delete')" onmouseout="hideDescription()">Удалить</button>
+    </div>
+    <div class="right-panel">
+        <div id="description" class="description">
+            <!-- Описание будет отображаться здесь -->
+        </div>
+    </div>
+</div>
+<script>
+    function showDescription(action) {
+        const descriptionDiv = document.getElementById('description');
+        let descriptionText = '';
+        switch (action) {
+            case 'add':
+                descriptionText = 'Добавьте новый объект в систему.';
+                break;
+            case 'view':
+                descriptionText = 'Просмотрите существующие объекты.';
+                break;
+            case 'edit':
+                descriptionText = 'Измените существующий объект.';
+                break;
+            case 'delete':
+                descriptionText = 'Удалите объект из системы.';
+                break;
+        }
+        descriptionDiv.innerHTML = descriptionText;
+        descriptionDiv.style.display = 'block';
+    }
+
+    function hideDescription() {
+        const descriptionDiv = document.getElementById('description');
+        descriptionDiv.style.display = 'none';
+    }
+</script>
+</body>
+</html>

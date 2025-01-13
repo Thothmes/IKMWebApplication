@@ -1,0 +1,25 @@
+#spring.application.name=IKMWebApplication
+#spring.datasource.url=jdbc:postgresql://localhost:5432/chupa
+#spring.datasource.username=postgres
+#spring.datasource.password=qwerty
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.dialect=org.postgresql.Driver
+
+spring:
+  application:
+    name: IKMWebApplication
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chupa
+    username: postgres
+    password: qwerty
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
