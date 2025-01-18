@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Внесение данных</title>
+  <link rel="stylesheet" type="text/css" th:href="@{css/styles.css}">
+</head>
+<body>
+<div class="container">
+  <div class="left-panel">
+    <button id="addGalaxyButton" onmouseover="showDescription('addGalaxyButton')" onmouseout="hideDescription()">Добавить галактику</button>
+    <button id="addPlanetButton" onmouseover="showDescription('addPlanetButton')" onmouseout="hideDescription()">Добавить планету</button>
+    <button id="addContinentButton" onmouseover="showDescription('addContinentButton')" onmouseout="hideDescription()">Добавить континент</button>
+    <button id="addCountryButton" onmouseover="showDescription('addCountryButton')" onmouseout="hideDescription()">Добавить страну</button>
+    <button id="addCityButton" onmouseover="showDescription('addCityButton')" onmouseout="hideDescription()">Добавить город</button>
+  </div>
+  <div class="right-panel">
+    <div id="description" class="description">
+      <!-- Описание будет отображаться здесь -->
+    </div>
+  </div>
+</div>
+<script>
+  function showDescription(action) {
+      const descriptionDiv = document.getElementById('description');
+      let descriptionText = '';
+      switch (action) {
+          case 'addGalaxyButton':
+              descriptionText = 'Добавить новую галактику в систему';
+              break;
+          case 'addPlanetButton':
+              descriptionText = 'Добавить новую планету в систему. (Учтите, что для добавления планеты, вам нужно выбрать уже существующую галактику. Если такой нет - создайте сначала её)';
+              break;
+          case 'addContinentButton':
+              descriptionText = 'Добавить новый континент в систему. (Учтите, что для добавления континента, вам нужно выбрать уже существующую планету. Если такой нет - создайте сначала её)';
+              break;
+          case 'addCountryButton':
+              descriptionText = 'Добавить новую страну в систему. (Учтите, что для добавления страны, вам нужно выбрать уже существующий континент. Если такого нет - создайте сначала его)';
+              break;
+          case 'addCityButton':
+              descriptionText = 'Добавить новый город в систему. (Учтите, что для добавления города, вам нужно выбрать уже существующую страну. Если такой нет - создайте сначала её)';
+              break;
+      }
+      descriptionDiv.innerHTML = descriptionText;
+      descriptionDiv.style.display = 'block';
+  }
+
+  function hideDescription() {
+      const descriptionDiv = document.getElementById('description');
+      descriptionDiv.style.display = 'none';
+  }
+</script>
+</body>
+</html>

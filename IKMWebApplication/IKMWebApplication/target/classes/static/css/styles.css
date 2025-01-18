@@ -1,0 +1,123 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+button:hover {
+    background-color: darkred;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    padding: 20px;
+}
+
+.right-panel {
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description {
+    display: none;
+    margin-top: 20px;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    align-self: flex-start; /* Выравнивание по верхнему краю */
+}
+
+.title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.block {
+    flex: 1;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.block h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.block ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.block ul li {
+    margin-bottom: 10px;
+}
+
+.block ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.block ul li a:hover {
+    text-decoration: underline;
+}
