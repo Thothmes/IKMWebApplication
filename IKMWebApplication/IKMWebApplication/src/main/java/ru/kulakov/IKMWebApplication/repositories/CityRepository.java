@@ -1,8 +1,9 @@
 package ru.kulakov.IKMWebApplication.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.kulakov.IKMWebApplication.entites.*;
+import ru.kulakov.IKMWebApplication.entities.*;
 import java.util.List;
 
 @Repository

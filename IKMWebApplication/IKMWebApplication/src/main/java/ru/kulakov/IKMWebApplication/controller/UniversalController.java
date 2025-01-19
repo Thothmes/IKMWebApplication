@@ -1,27 +1,15 @@
 package ru.kulakov.IKMWebApplication.controller;
 
-import com.sun.source.tree.CompilationUnitTree;
-import org.springframework.beans.CachedIntrospectionResults;
-import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.kulakov.IKMWebApplication.entites.*;
+import ru.kulakov.IKMWebApplication.entities.*;
 import ru.kulakov.IKMWebApplication.repositories.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-
 import jakarta.validation.*;
-import org.springframework.validation.BindingResult;
 
 @Controller
 @AllArgsConstructor
@@ -67,25 +55,29 @@ public class UniversalController {
 
     @GetMapping("/add/galaxy")
     public String AddGalaxyAction(Model model) {
+        String typeaction = "add";
         model.addAttribute("galaxy", new Galaxy());
+        model.addAttribute("typeaction", typeaction);
         return "actionformgalaxy";
     }
 
     @PostMapping("/add/galaxy")
-    public String AddGalaxyAction(@Valid @ModelAttribute Galaxy galaxy) {
+    public String AddGalaxyAction(@Valid @ModelAttribute Galaxy galaxy, @ModelAttribute String typeaction) {
         galaxyRepository.save(galaxy);
         return "redirect:/confirm";
     }
 
     @GetMapping("/edit/galaxy/{id}")
     public String EditGalaxyAction(@PathVariable Integer id, Model model) {
+        String typeaction = "edit";
         Galaxy galaxy = galaxyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid author Id:" + id));
         model.addAttribute("galaxy", galaxy);
+        model.addAttribute("typeaction", typeaction);
         return "actionformgalaxy";
     }
 
     @PostMapping("/edit/galaxy/{id}")
-    public String EditGalaxyAction(@PathVariable Integer id, @ModelAttribute Galaxy galaxy) {
+    public String EditGalaxyAction(@PathVariable Integer id, @ModelAttribute Galaxy galaxy, @ModelAttribute String typeaction) {
         galaxy.setId(id);
         galaxyRepository.save(galaxy);
         return "redirect:/confirm";

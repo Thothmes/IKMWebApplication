@@ -5,59 +5,52 @@
 </head>
 <body>
 <h1>Просмотр</h1>
+
 <div class="block">
-    <p>Name: <span th:text="${object.name}"></span></p>
+    <p>Имя: <span th:text="${object.name}"></span></p>
     <p>ID: <span th:text="${object.id}"></span></p>
 </div>
-<div class="block">>
-    <h3 th:text="${type == 'galaxy' ? 'Planets' : 'Galaxy'}"></h3>
+
+<div class="block">
+    <h2 th:text="${type == 'galaxy' ? 'Планеты' : 'Галактика'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'galaxy' ? planets : galaxies}">
+        <li th:each="item : ${type == 'galaxy' ? countries : cities}">
             <span th:text="${item.name}"></span>
+            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<!-- Второй столбец -->
-<div class="block">>
-    <h3 th:text="${type == 'galaxy' || type == 'planet' ? 'Continents' : 'Planet'}"></h3>
+<div class="block">
+    <h2 th:text="${type == 'galaxy' || type == 'planet' ? 'Континенты' : 'Планета'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'galaxy' || type == 'planet' ? continents : planets}">
+        <li th:each="item : ${type == 'galaxy' || type == 'planet' ? continents : planet}">
             <span th:text="${item.name}"></span>
+            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<!-- Третий столбец -->
 <div class="block">>
-    <h3 th:text="${type == 'galaxy' || type == 'planet' || type == 'continent' ? 'Countries' : 'Continent'}"></h3>
+    <h2 th:text="${type == 'city' || type == 'country' ? 'Континент' : 'Страны'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'galaxy' || type == 'planet' || type == 'continent' ? countries : continents}">
+        <li th:each="item : ${type == 'city' || type == 'country' ? continent : countries}">
             <span th:text="${item.name}"></span>
+            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<!-- Четвертый столбец -->
 <div class="block">>
-    <h3 th:text="${type == 'city' ? 'Страны' : 'Города'}"></h3>
+    <h2 th:text="${type == 'city' ? 'Страны' : 'Города'}"></h2>
     <ul>
         <li th:each="item : ${type == 'city' ? countries : cities}">
             <span th:text="${item.name}"></span>
+            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<a th:href="@{/}">Вернуться на главную страницу</a>
+<button id="gohomeButton" onclick="window.location.href='/'">Вернуться на главную</button>
 </body>
 </html>
-
-<!--
-<h2 th:text="${type == 'city' ? 'Страны' : 'Города'}"></h2>
-<ul>
-    <li th:each="item : ${type == 'city' ? countries : cities}">
-        <span th:text="${item.name}"></span>
-        <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
-    </li>
-</ul>
--->

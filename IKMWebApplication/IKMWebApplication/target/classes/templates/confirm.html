@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <title>Успешное действие</title>
 </head>
 <body>
-
+<h1>Подтверждение</h1>
+<p th:text="Действие успешно совершенно!"></p>
+<button id="gohomeButton" onclick="window.location.href='/'">Вернуться на главную</button>
 </body>
 </html>

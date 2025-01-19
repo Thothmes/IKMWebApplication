@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ошибка</title>
+    <title>Успешное действие</title>
 </head>
 <body>
-<h1>Error</h1>
-<p th:text="Действие выполнено!"></p>
-<a th:href="@{/}"Вернуться на главную страницу</a>
+<h1>Подтверждение</h1>
+<p th:text="Действие успешно совершенно!"></p>
+<button id="gohomeButton" onclick="window.location.href='/'">Вернуться на главную</button>
 </body>
 </html>
