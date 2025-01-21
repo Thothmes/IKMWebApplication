@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание нового континента</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div>
+    <h1>Введите имя нового континента</h1>
+    <form th:action="@{/add/continent}" th:object="${continent}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required>
+        <select id="planet" th:field="*{planet}" required>
+            <option th:each="planet : ${planets}" th:value="${planet.getId()}" th:text="${planet.name}"></option>
+        </select>
+        <button type="submit">Подтвердить действие</button>
+    </form>
+</div>
+</body>
+</html>

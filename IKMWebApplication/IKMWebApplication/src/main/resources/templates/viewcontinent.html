@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Просмотр объекта</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Информация об объекте</h1>
+<div class="block">
+    <p>Имя:
+        <span th:text="${supremeobject.name}"></span>
+    </p>
+    <p>ID:
+        <span th:text="${supremeobject.id}"></span>
+    </p>
+    <p>Тип:
+        <span th:text="${type}"></span>
+    </p>
+</div>
+
+<div class="block">
+    <h2>Галактика</h2>
+    <ul>
+        <li>
+            <span th:text="${galaxy.name}"></span>
+            <a th:href="@{/view/galaxy/{id}(id=${galaxy.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+        </li>
+    </ul>
+</div>
+
+<div class="block">
+    <h2>Планета</h2>
+    <ul>
+        <li>
+            <span th:text="${planet.name}"></span>
+            <a th:href="@{/view/planet/{id}(id=${planet.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+        </li>
+    </ul>
+</div>
+
+<div class="block">
+    <h2>Страны</h2>
+    <ul>
+        <li th:each="item : ${country}">
+            <span th:text="${item.name}"></span>
+            <a th:href="@{/view/country/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+        </li>
+    </ul>
+</div>
+
+<div class="block">
+    <h2>Города</h2>
+    <ul>
+        <li th:each="item : ${city}">
+            <span th:text="${item.name}"></span>
+            <a th:href="@{/view/city/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+        </li>
+    </ul>
+</div>
+
+<button id="gohomeButton" onclick="window.location.href='/'">Вернуться на главную</button>
+</body>
+</html>

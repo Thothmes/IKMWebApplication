@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View Object</title>
+    <title>Просмотр объекта</title>
 </head>
 <body>
-<h1>Просмотр</h1>
-
+<h1>Информация об объекте</h1>
 <div class="block">
-    <p>Имя: <span th:text="${object.name}"></span></p>
-    <p>ID: <span th:text="${object.id}"></span></p>
+    <p>Имя:
+        <span th:text="${supremeobject.name}"></span>
+    </p>
+    <p>ID:
+        <span th:text="${supremeobject.id}"></span>
+    </p>
+    <p>ID:
+        <span th:text="${type}"></span>
+    </p>
 </div>
 
 <div class="block">
-    <h2 th:text="${type == 'galaxy' ? 'Планеты' : 'Галактика'}"></h2>
+    <h2 th:text="${{type} == 'galaxy' ? 'Галактика' : 'Планеты'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'galaxy' ? countries : cities}">
+        <li th:each="item : ${{type} == 'galaxy' ? galaxy : planet}">
             <span th:text="${item.name}"></span>
-            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+            <a th:href="@{/view/{newtype}/{id}(newtype=${{type} == 'galaxy' ? 'galaxy' : 'planet'}, id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
 <div class="block">
-    <h2 th:text="${type == 'galaxy' || type == 'planet' ? 'Континенты' : 'Планета'}"></h2>
+    <h2 th:text="${{type} == galaxy || type == planet ? 'Планета' : 'Континенты'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'galaxy' || type == 'planet' ? continents : planet}">
+        <li th:each="item : ${{type} == galaxy || type == planet ? planet : continent}">
             <span th:text="${item.name}"></span>
-            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+            <a th:href="@{/view/${item}/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<div class="block">>
-    <h2 th:text="${type == 'city' || type == 'country' ? 'Континент' : 'Страны'}"></h2>
+<div class="block">
+    <h2 th:text="${{type} == city || type == country ? 'Континент' : 'Страны' }"></h2>
     <ul>
-        <li th:each="item : ${type == 'city' || type == 'country' ? continent : countries}">
+        <li th:each="item : ${{type} == city || type == country ? country : continent}">
             <span th:text="${item.name}"></span>
-            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+            <a th:href="@{/view/${item}/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>
 
-<div class="block">>
-    <h2 th:text="${type == 'city' ? 'Страны' : 'Города'}"></h2>
+<div class="block">
+    <h2 th:text="${{type} == city ? 'Страны' : 'Города'}"></h2>
     <ul>
-        <li th:each="item : ${type == 'city' ? countries : cities}">
+        <li th:each="item : ${{type} == city ? country : city}">
             <span th:text="${item.name}"></span>
-            <a th:href="@{/view/item/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
+            <a th:href="@{/view/${item}/{id}(id=${item.getId()})}" class="button button-view"><i class="fas fa-eye"></i>Просмотреть</a>
         </li>
     </ul>
 </div>

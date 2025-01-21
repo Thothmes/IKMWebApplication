@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Изменение страны</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div>
+  <h1>Измените имя страны</h1>
+  <form th:action="@{/edit/country/{id}(id=${country.id})}" th:object="${country}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+    <select id="continent" th:field="*{continent}" required>
+      <option th:each="continent : ${continents}" th:value="${continent.getId()}" th:text="${continent.name}"></option>
+    </select>
+    <button type="submit">Подтвердить действие</button>
+  </form>
+</div>
+</body>
+</html>

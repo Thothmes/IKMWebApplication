@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title th:text = "${typeaction == 'add' ? 'Создание нового объекта' : 'Изменение объекта' }"></title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div>
-  <h1 th:text = "${typeaction == 'add' || typeaction =='edit' ? 'Введите имя новой галактики' : 'Измените имя галактике' }"></h1>
-  <form action="#" th:action="@{${typeaction == 'add' || typeaction == 'edit' ? 'add/galaxy' : '/edit/galaxy/' + ${galaxy.getId()}}}" th:object="${galaxy}" method="post">
+  <h1 th:text = "${typeaction == 'add' ? 'Введите имя новой галактики' : 'Измените имя галактике' }"></h1>
+  <form action="#" th:action="@{${typeaction == 'add' ? '/add/galaxy' : '/edit/galaxy/' + galaxy.getId()}}" th:object="${galaxy}" method="post">
     <label for="name">Name:</label>
     <input type="text" id="name" th:field="*{name}" required>
     <button type="submit">Подвтердить действие</button>
